@@ -1,12 +1,11 @@
 #include "c_interview.h"
-#define TOTAL_ELEMENTS (sizeof(array) / sizeof(array[0]))
-int array[] = {23,34,12,17,204,99,16};
+#include "string.h"
 /************************************************************************
  * @brief  :How will you print “Hello World” without semicolon?
  *         
- * @param  : 
+ * @param  :void 
  *          
- * @return : 
+ * @return : void
  *************************************************************************/
 
 void print_without_semicolon(void)
@@ -21,9 +20,9 @@ void print_without_semicolon(void)
  * @brief  :Write a C program to compute the sum of the two given integer values. 
  *          If the two values are the same, then return triple their sum?
  *         
- * @param  : 
+ * @param  : int a, int b
  *          
- * @return : 
+ * @return : int
  *************************************************************************/
 int sum_check(int a,int b )
 {
@@ -37,15 +36,61 @@ int sum_check(int a,int b )
 	}
 }
 
-
-
-
-int main()
+/***************************************************************************
+ * @brief  :write a program to swap a nibble or byte.  
+ *         
+ * @param  : int opt int num
+ *          
+ * @return : int
+ *************************************************************************/
+int swap(int opt,int num)
 {
-	int d;
+	switch(opt)
+	{
+		case 1:
+			return ( (num & 0x0F) << 4 | (num & 0xF0) >> 4 );
+			break;
+		case 2:
 
-	for(d=-1;d <= (TOTAL_ELEMENTS-2);d++)
-		printf("%d\n",array[d+1]);
-
-	return 0;
+			return ( (num & 0x00FF) << 8 | (num & 0xFF00) >> 8 );
+			break;
+		default:
+			printf("invalid option");
+			exit(1);
+	}
 }
+/***************************************************************************
+ * @brief  :write a program to palindromeofanumber 
+ *         
+ * @param  : int num
+ *          
+ * @return : int
+ *************************************************************************/
+int palindromeofnumber(int num)
+{
+	int iNumber_copy = num;
+	int n=0;
+	int m=0;
+	while(num != 0 )
+	{
+		n=num%10;
+		m=m*10+n;
+		num=num/10;	
+	}
+	if(iNumber_copy == m)
+	{
+		return 1;
+	}
+	else 
+	{
+		return 0;
+	}
+}
+/***************************************************************************
+ * @brief  :write a program to palindromaofastring.  
+ *         
+ * @param  : char *ptr
+ *          
+ * @return : int
+ *************************************************************************/
+
